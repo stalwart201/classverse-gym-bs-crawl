@@ -26,4 +26,4 @@ with open('test.csv', 'wb') as csvfile:
             for x in range(0,len(name)):
                 row = [(name[x].strip()).encode('ascii','ignore')]+[address[x].strip().encode('ascii','ignore')]+[latitude[x]]+[longitude[x]]
                 print row
-                # spamwriter.writerow(row)
+                spamwriter.writerow(row)
