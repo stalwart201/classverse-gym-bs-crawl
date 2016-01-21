@@ -1,7 +1,10 @@
 import requests
-from bs4 import BeautifulSoup
+import lxml.html
 import csv
 from lxml import etree
+from lxml import html
+
+
 
 with open('test.csv', 'wb') as csvfile:
     spamwriter = csv.writer(csvfile, delimiter=',',
@@ -15,11 +18,12 @@ with open('test.csv', 'wb') as csvfile:
 
             response = requests.get(a)
             html = response.content
-            soup = BeautifulSoup(html)
-            html = etree.HTML(html)
-            name = html.xpath('//*[@class="studio_name"]/text()')
-            address = html.xpath('//*[@class="address-col"]/text()')
+            item = etree.HTML(html)
+            name = item.xpath('//*[@class="studio_name"]/text()')
+            address = item.xpath('//*[@class="address-col"]/text()')
+            latitude = item.xpath('//div[@class="studio-row js-studio-row old"]/@data-lat')
+            longitude = item.xpath('//div[@class="studio-row js-studio-row old"]/@data-lng')
             for x in range(0,len(name)):
-                row = [(name[x].strip()).encode('ascii','ignore')]+[address[x].strip().encode('ascii','ignore')]
+                row = [(name[x].strip()).encode('ascii','ignore')]+[address[x].strip().encode('ascii','ignore')]+[latitude[x]]+[longitude[x]]
                 print row
-                spamwriter.writerow(row)
+                # spamwriter.writerow(row)
