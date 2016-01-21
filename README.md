@@ -1,2 +1,2 @@
 # classverse-gym-bs-crawl
-//crawling gym category using beautifulsoup
+//crawling gym category using lxml and request
