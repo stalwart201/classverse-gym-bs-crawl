@@ -1,2 +1,3 @@
 # classverse-gym-bs-crawl
-//crawling gym category using lxml and request
+//crawling gym category of classverse.com using lxml and request
+//and saving the data into csv format.
