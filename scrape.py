@@ -1,3 +1,4 @@
+#import
 import requests
 import lxml.html
 import csv
@@ -5,7 +6,7 @@ from lxml import etree
 from lxml import html
 
 
-
+#writing the scraped data in a csv, named test.csv
 with open('test.csv', 'wb') as csvfile:
     spamwriter = csv.writer(csvfile, delimiter=',',
             quotechar='"', quoting=csv.QUOTE_MINIMAL)
